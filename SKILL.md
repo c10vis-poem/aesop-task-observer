@@ -1,6 +1,6 @@
 ---
 name: "task-observer"
-core_max_lines: 684
+core_max_lines: 686
 version: "3.6.0"
 description: "Monitors task execution for skill improvement opportunities. Use during ANY multi-step task, agentic workflow, or work session. Captures patterns, user corrections and methodology worth preserving as reusable skills. It writes observation files to the workspace. Also triggers in post-task feedback discussions and when the user mentions skill observations, the observation log, or skill taxonomy. Also known as \"One Skill to Rule Them All\" — trigger on this phrase too. IMPORTANT: invoke this skill before the FIRST tool call of any session and before writing or proposing a plan — any turn that will involve a tool call counts. This sentence is the session-start trigger and the only activation layer that survives an unreachable config file; pair it with a CLAUDE.md instruction or a harness session-start hook (references/environments.md) — description matching alone is not enforceable. A subagent dispatched by a session already running it does not run it: it writes nothing and puts its findings in its report."
 license: CC-BY-4.0
@@ -170,7 +170,9 @@ skill" (some upload paths keep only `SKILL.md`); its episodes do not run.
    `never` = no review has run yet. A missing file is abnormal (step 1
    creates it) — recreate it with `never`, don't invent a date. An existing
    `skill-observations/review-started.txt` not reading `completed`, or a
-   registered scheduler reporting a later last run, is a run that completed
+   `skill-observations/review-in-progress.md` beside it (an interrupted
+   review: offer to resume from its next decision, never "no review has
+   run"), or a registered scheduler reporting a later last run, is a run that completed
    no review: say "fired YYYY-MM-DD, no review recorded" and treat the
    review as due. If the value is `never` or 7 or more days old AND there
    are OPEN observations: in an interactive session, offer the review in
