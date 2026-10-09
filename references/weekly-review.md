@@ -1012,6 +1012,16 @@ skills).
 **Step 5 — apply.** Begin with the copy, not the edit: for each skill
 with approved/non-escalated items,
 
+**Map every proposed rule to the enforcement layer that already exists
+before presenting it.** Read the user's installed enforcement (hooks
+README, harness settings hooks, instruction files) and give each proposed
+rule a verdict: already enforced (cite the hook or line), partly (name the
+gap), or new. Propose text only for rules no hook can check, and propose a
+barrier only for the gap. A review that relays rules unmapped hands the
+user duplicates of working mechanisms, and the one real gap hides inside
+them. Also check ownership claims ("foreign-maintained") against the
+user's fork list before writing them.
+
 **Verify an observation's factual claims against the live system before
 promoting them into a skill.** An observation records what one session
 saw; a skill states what is true. Promoting the first into the second
