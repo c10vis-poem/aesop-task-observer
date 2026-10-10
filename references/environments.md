@@ -483,6 +483,10 @@ fi
 printf '{"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":"%s"}}\n' "$msg"
 ```
 
+`scripts/session-start-hook.sh` is a ready-made version that goes one step
+further: it runs `session-start-scan.sh` itself and injects the scan output, so
+the scan cannot be skipped or hand-rolled (needs `jq`).
+
 On native Windows, Claude Code runs hook commands through Git Bash, where
 a bare `bash` or `python` can resolve to WSL's `System32\bash.exe` or the
 Microsoft Store stub under `WindowsApps`, and neither runs the hook.

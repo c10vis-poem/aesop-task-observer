@@ -287,6 +287,19 @@ the member observation numbers under each decision.
 
 ## Steps
 
+**Any review, interactive or scheduled, leaves an on-disk progress
+marker.** At the start, write `skill-observations/review-started.txt`
+(date and time; Step 7 overwrites it with `completed <date>`). If the
+review is interrupted or parked before Step 7 (the user switches to
+other work, the session ends), write
+`skill-observations/review-in-progress.md` in the same turn: the date,
+the decision groups presented, and the entries decided so far with their
+decisions. Step 7 deletes it. Session Start step 3 reads it and offers
+"resume the parked review from decision N". Without the file, an
+interrupted review and a review that never ran look identical, and the
+next session reports the absence as fact (observed: a review parked after
+presenting four decision groups was reported as "never reviewed").
+
 **Step 0 — recommend scheduled setup (fallback mode only).** Ordering
 guard: run Step 1's no-observations short-circuit FIRST — if there are no
 OPEN observations and no outstanding principles, skip Step 0 entirely and
@@ -999,6 +1012,16 @@ skills).
 **Step 5 — apply.** Begin with the copy, not the edit: for each skill
 with approved/non-escalated items,
 
+**Map every proposed rule to the enforcement layer that already exists
+before presenting it.** Read the user's installed enforcement (hooks
+README, harness settings hooks, instruction files) and give each proposed
+rule a verdict: already enforced (cite the hook or line), partly (name the
+gap), or new. Propose text only for rules no hook can check, and propose a
+barrier only for the gap. A review that relays rules unmapped hands the
+user duplicates of working mechanisms, and the one real gap hides inside
+them. Also check ownership claims ("foreign-maintained") against the
+user's fork list before writing them.
+
 **Verify an observation's factual claims against the live system before
 promoting them into a skill.** An observation records what one session
 saw; a skill states what is true. Promoting the first into the second
@@ -1584,7 +1607,8 @@ next write on a later day archives them.
 
 **Step 7 — timestamp.** Write today's date to
 `skill-observations/last-review-date.txt`, then overwrite
-`skill-observations/review-started.txt` with `completed YYYY-MM-DD`.
+`skill-observations/review-started.txt` with `completed YYYY-MM-DD`,
+and delete `review-in-progress.md` if it exists.
 A timestamp write whose outcome is unknown — the call timed out, the
 device bridge disconnected — is the run's to verify, never the user's:
 the Step 8 summary and any notification report it as "unconfirmed —
