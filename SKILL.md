@@ -173,11 +173,11 @@ skill" (some upload paths keep only `SKILL.md`); its episodes do not run.
 3. **Review trigger.** Read `skill-observations/last-review-date.txt`. The
    value carries the truth: a date = when the last review actually ran;
    `never` = no review has run yet. A missing file is abnormal (step 1
-   creates it) — recreate it with `never`, don't invent a date. An existing
-   `skill-observations/review-started.txt` not reading `completed`, or a
-   registered scheduler reporting a later last run, is a run that completed
-   no review: say "fired YYYY-MM-DD, no review recorded" and treat the
-   review as due. If the value is `never` or 7 or more days old AND there
+   creates it) — recreate it with `never`, don't invent a date.
+   `review-started.txt` not reading `completed`, a `review-in-progress.md`
+   beside it (interrupted: offer to resume from its next decision), or a
+   later scheduler run means no review completed: say "fired YYYY-MM-DD, no
+   review recorded" and treat it as due. If the value is `never` or 7+ days old AND there
    are OPEN observations: in an interactive session, offer the review in one
    line, once per session, and proceed with the user's task unless they opt in;
    never gate their work on the review. Scale the offer's CONTENT with the

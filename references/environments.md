@@ -524,6 +524,10 @@ escapes the whole message: a Windows path's backslashes and a `"` in a
 folder name otherwise produce output that does not parse, and a hook
 whose output does not parse injects nothing.
 
+`scripts/session-start-hook.sh` is a ready-made version that goes one step
+further: it runs `session-start-scan.sh` itself and injects the scan output, so
+the scan cannot be skipped or hand-rolled (needs `jq`).
+
 On native Windows, Claude Code runs hook commands through Git Bash, where
 a bare `bash` or `python` can resolve to WSL's `System32\bash.exe` or the
 Microsoft Store stub under `WindowsApps`, and neither runs the hook.
