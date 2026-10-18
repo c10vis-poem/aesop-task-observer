@@ -4,16 +4,18 @@
 
 **Why "One Skill to Rule Them All"?** The slogan doesn't claim this is the best skill. It couldn't be: a meta-skill is useless without the skills it watches over. It describes what Task Observer does: keep an eye on how all your other skills are working and suggest improvements. You decide which changes are installed.
 
-This meta-skill has **logged over 1,800 observations across my 81 skills**, most of which were turned into skill improvements. The majority of my 81 skills were themselves created based on observations by the meta-skill.
+This meta-skill has **logged over 1,900 observations across my 83 skills**, most of which were turned into skill improvements. The majority of my 83 skills were themselves created based on observations by the meta-skill.
 
-The current version of task-observer also includes improvements from over 80 contributors, each credited as an author or co-author in the commit history, and over 200 issues and pull requests have been closed. Without these contributions, the project wouldn't be half as good as it is today.
+The current version of task-observer also includes improvements from over 90 contributors, each credited as an author or co-author in the commit history, and over 220 issues and pull requests have been closed. Without these contributions, the project wouldn't be half as good as it is today.
+
+**Want to support the project? It's not about money — read [how you can help](SUPPORT.md).**
 
 This meta-skill is a practical application of the [Augmented Expertise](https://www.rebelytics.com/augmented-expertise/) methodology, an AI framework for knowledge workers. However, users have reported successful integrations into their Hermes and Openclaw setups, so it works equally well with autonomous agents.
 
 ## Quick install
 
 1. **Install it, by either route:**
-   - **From a terminal (Vercel's skills CLI, needs Node.js):** `npx skills add rebelytics/one-skill-to-rule-them-all --skill task-observer` — add `-g` to install it for all your projects. This is the most-used route: the skills.sh listing reports over 10,000 installs, a lower bound because the CLI's install telemetry is opt-out.
+   - **From a terminal (Vercel's skills CLI, needs Node.js):** `npx skills add rebelytics/one-skill-to-rule-them-all --skill task-observer` — add `-g` to install it for all your projects. This is the most-used route: the skills.sh listing reports over 12,000 installs.
    - **In the Claude apps (web, desktop, mobile, Cowork):** upload the `.skill` bundle from the latest release via Settings → Customize.
 2. **Activate it, whichever route you used:** add the activation instruction from `references/environments.md` to your CLAUDE.md (or your platform's equivalent), then check that it runs (see "Check that it actually runs" below). Installing alone is not enough, because description matching under-triggers.
 
@@ -84,7 +86,7 @@ The skill is a small bundle: `SKILL.md`, the files in `references/` that are loa
 
 **Vercel's skills CLI:** the skills.sh listing carries independent security audits from Gen Agent Trust Hub, Socket and Snyk.
 
-**Check that it actually runs.** Installing the files is not the same as activating the skill: description matching alone under-triggers, so add the activation instruction from `references/environments.md` to your CLAUDE.md (or your platform's equivalent) or install the session-start hook. Then verify in a *new* session — the session you install in cannot prove it — that the skill is invoked before the first tool call. The external tell if you skipped this: if `skill-observations/observation-log/` doesn't exist after a few sessions of real work, activation never happened.
+**Check that it actually runs.** Installing the files is not the same as activating the skill: description matching alone under-triggers, so add the activation instruction from `references/environments.md` to your CLAUDE.md (or your platform's equivalent) or install the session-start hook. Then verify in a *new* session — the session you install in cannot prove it — that the skill is invoked before the first tool call: open that session with ordinary work that does not mention the skill, because a request that names it invokes it by hand and proves nothing. The external tell if you skipped this: if `skill-observations/observation-log/` doesn't exist after a few sessions of real work, activation never happened. If it exists, read the last `session-start scan` line in `skill-observations/checkpoints.log`: that is the last session that ran the skill, so a date days old while you kept working means activation stopped, however many entries the first session wrote. Another skill's start-up text appearing in your sessions is not evidence that this one is active.
 
 ## Claude environment notes
 
@@ -131,6 +133,10 @@ This is an open-source project for the community. If you use it, I would love to
 - **Interesting use cases:** Have you come up with a creative way of using or improving Task Observer?
 - **Integrations with other systems:** One user told me that they connected task observer to Obsidian. Do you have a similar story?
 
+## Support the project
+
+There is no donation button: the project is free and community-driven, and the help it needs is reach. If you know someone who would benefit from Task Observer, tell them; if you have an audience, tell them; if you know someone who has one, tell them. Public recommendations go into the Recommended by and Listed in sections below. The whole story is in [SUPPORT.md](SUPPORT.md).
+
 ## License
 
 This work is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
@@ -156,8 +162,7 @@ task-observer is indexed in these community lists and skill directories:
 - [Zread](https://zread.ai/rebelytics/one-skill-to-rule-them-all)
 - [TypingMind](https://www.typingmind.com/skills/rebelytics-task-observer)
 - [karanb192 / awesome-claude-skills](https://github.com/karanb192/awesome-claude-skills)
-
-It is also redistributed, unmodified and under CC BY 4.0, in [iamneilroberts/claude-skills](https://github.com/iamneilroberts/claude-skills).
+- [iamneilroberts / claude-skills](https://github.com/iamneilroberts/claude-skills)
 
 ## Recommended by
 
